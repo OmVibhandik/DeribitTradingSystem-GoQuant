@@ -6,7 +6,9 @@ int main()
     const std::string clientId = "mW3e8pxT";
     const std::string clientSecret = "e1Ii3e1asYyBPST_8m_9jSK90SgEaLdwwOK-zefN-s0";
 
+
     WebSocketOrderBookServer wsServer(clientId, clientSecret);
+
 
     std::thread wsThread([&wsServer]()
     {
@@ -14,7 +16,7 @@ int main()
     });
 
     wsServer.startOrderBookUpdates(35);
-
     wsThread.join();
+
     return 0;
 }

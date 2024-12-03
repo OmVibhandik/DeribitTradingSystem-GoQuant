@@ -10,12 +10,16 @@ std::string getAccessToken(const std::string &clientId, const std::string &clien
         {"jsonrpc", "2.0"}
     };
 
+    // std::cout<<"Hello\n";
+
     std::string response = sendRequest("https://test.deribit.com/api/v2/public/auth", payload);
     std::cout << "Raw API Response: " << response << std::endl; 
 
     try
     {
         auto responseJson = json::parse(response);
+
+        // std::cout << "Hello\n";
 
         if (responseJson.contains("result") && responseJson["result"].contains("access_token"))
         {
