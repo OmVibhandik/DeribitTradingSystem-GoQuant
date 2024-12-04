@@ -17,6 +17,30 @@ The Deribit Trading System is a high-performance trading application designed to
   - Minimized API response times
   - Efficient WebSocket communication
 
+## Project Flow
+```
+  [Start]
+    ↓
+  [Initialize WebSocket Server]
+    ↓
+  [Listen for Client Connections]
+    ↓
+  [Client Sends Message (JSON)]
+    ↓
+  [Check Action Type]
+    ↓
+    ├─[Action: Subscribe]─> [Fetch Order Book from API] ─> [Send Data to Client]
+    ├─[Action: Unsubscribe]─> [Stop Order Book Updates]
+    ├─[Action: Place Order]─> [Send Place Order API Request] ─> [Return Order ID to Client]
+    ├─[Action: Get Open Orders]─> [Send Get Open Orders API Request] ─> [Return Open Orders to Client]
+    ├─[Action: Get Positions]─> [Send Get Positions API Request] ─> [Return Position Info to Client]
+    ↓
+  [Measure Latency (API Response, WebSocket Propagation)]
+    ↓
+  [End]
+  
+```
+
 ## Technologies Used
 
 - **Language**: C++ (C++17)
